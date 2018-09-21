@@ -1,4 +1,5 @@
 import external_library.Engine;
+import switch_logic.SwitchClient;
 
 public class EngineAdapter extends SwitchClient {
   private Engine adaptee;

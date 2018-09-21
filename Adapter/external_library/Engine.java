@@ -1,10 +1,12 @@
+package external_library;
+
 public class Engine {
   private boolean state;
   private String name;
 
   public Engine(String name) {
     this.name = name;
-    off();
+    this.state = false;
   }
 
   public void on() {

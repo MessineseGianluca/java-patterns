@@ -7,7 +7,7 @@ public class AdapterHandler {
     SwitchClient engineAdapter = new EngineAdapter(realEngine);
     Switch engineSwitch = new ConcreteSwitch(engineAdapter);
 
-    engineSwitch.turnOn();
-    engineSwitch.turnOff();
+    engineSwitch.detectOn();
+    engineSwitch.detectOff();
   }
 }

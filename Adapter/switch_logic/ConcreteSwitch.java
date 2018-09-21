@@ -1,14 +1,16 @@
+package switch_logic;
+
 public class ConcreteSwitch extends Switch {
   public ConcreteSwitch(SwitchClient switchUser) {
     super(switchUser);
   }
 
-  public void turnOn() {
+  public void detectOn() {
     this.state = true;
     switchUser.turnOn();
   }
 
-  public void turnOff() {
+  public void detectOff() {
     state = false;
     switchUser.turnOff();
   }

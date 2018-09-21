@@ -1,3 +1,5 @@
+package switch_logic;
+
 public abstract class Switch {
 
   protected SwitchClient switchUser;
@@ -8,7 +10,7 @@ public abstract class Switch {
     state = false;
   }
 
-  public abstract detectOn();
+  public abstract void detectOn();
 
-  public abstract detectOff();
+  public abstract void detectOff();
 }
