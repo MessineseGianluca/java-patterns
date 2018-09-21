@@ -9,10 +9,12 @@ public class Engine {
 
   public void on() {
     state = true;
+    System.out.println("Engine turned on.");
   }
 
   public void off() {
     state = false;
+    System.out.println("Engine turned off.");
   }
 
   public boolean getState() {
