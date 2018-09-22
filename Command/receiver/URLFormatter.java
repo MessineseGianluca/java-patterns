@@ -1,7 +1,7 @@
 package receiver;
 
-static class URLFormatter {
-  String formatTimeURLQuery(String continent, String capital, String[] fields) {
+class URLFormatter {
+  static String formatTimeURLQuery(String continent, String capital, String[] fields) {
     String formattedZone = formatZone(continent, capital);
     String formattedFields = formatFields(fields);
     String key = MyTimeZoneDBKey.getKey();
@@ -9,11 +9,11 @@ static class URLFormatter {
         + "&fields=" + formattedFields;
   }
 
-  private String formatZone(String continent, String capital) {
+  private static String formatZone(String continent, String capital) {
     return continent + "/" + capital;
   }
 
-  private String formatFields(String[] fields) {
+  private static String formatFields(String[] fields) {
     String formattedFields = "";
     for (String field : fields) {
       formattedFields += field + ",";

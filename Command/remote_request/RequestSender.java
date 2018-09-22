@@ -7,12 +7,12 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import javax.net.ssl.HttpsURLConnection;
 
-public static class RequestSender {
+public class RequestSender {
 
   private static final String USER_AGENT = "Mozilla/5.0";
 
   // HTTP GET request
-  static String sendGet(String url) throws Exception {
+  public static String sendGet(String url) throws Exception {
     URL obj = new URL(url);
     HttpURLConnection con = (HttpURLConnection) obj.openConnection();
     con.setRequestMethod("GET");
