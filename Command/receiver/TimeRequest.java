@@ -20,6 +20,11 @@ public class TimeRequest {
 
   private String formatURLAndSendRequest(String continent, String capital, String[] fields) {
     String url = URLFormatter.formatTimeURLQuery(continent, capital, fields);
+    String res = sendRequest(url);
+    return res;
+  }
+
+  private String sendRequest(String url) {
     String res = "";
     try {
       res = RequestSender.sendGet(url);
