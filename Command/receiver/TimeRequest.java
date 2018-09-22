@@ -4,18 +4,20 @@ import remote_request.RequestSender;
 
 public class TimeRequest {
 
-  public static String getCountryFormattedTime(String continent, String capital) {
+  public static void getCountryFormattedTime(String continent, String capital) {
     String[] fields = { "formatted" };
     String res = formatURLAndSendRequest(continent, capital, fields);
     String value = getFieldValue(res, fields[0]);
-    return "Time for " + capital + ": " + value;
+    String stringToPrint = "Time for " + capital + ": " + value;
+    System.out.println(stringToPrint);
   }
 
-  public static String getCountryTimeZoneAbbreviation(String continent, String capital) {
+  public static void getCountryTimeZoneAbbreviation(String continent, String capital) {
     String[] fields = { "abbreviation" };
     String res = formatURLAndSendRequest(continent, capital, fields);
     String value = getFieldValue(res, fields[0]);
-    return "Timezone Abbreviation for " + capital + ": " + value;
+    String stringToPrint = "Time zone abbreviation for " + capital + ": " + value;
+    System.out.println(stringToPrint);
   }
 
   private static String formatURLAndSendRequest(String continent, String capital, String[] fields) {
