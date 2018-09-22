@@ -19,6 +19,7 @@ public class TimeCommandInvoker {
   }
 
   public void printCommandLog() {
+    System.out.println("Command log: ");
     Iterator<String> e = commandsLog.iterator();
     while (e.hasNext()) {
       System.out.println(e.next());
