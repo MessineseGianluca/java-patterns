@@ -23,16 +23,9 @@ public class StandardGamingAccount extends GamingAccountDecorator {
 
   public void playForAGivenTime(int delay) {
     setIsPlaying(true);
-    EndGameDLC endGameTask = new EndGameDLC();
-    Timer endGameTimer = new Timer();
-    endGameTimer.schedule(endGameTask, delay);
 
-    try {
-      Thread.sleep(delay);
-    } catch (InterruptedException e) {
-      System.out.println(e);
-    }
-    endGameTimer.cancel();
-    setIsPlaying(false);
+    Timer endGameTimer = new Timer();
+    EndGameDLC endGameTask = new EndGameDLC(endGameTimer, this);
+    endGameTimer.schedule(endGameTask, delay);
   }
 }

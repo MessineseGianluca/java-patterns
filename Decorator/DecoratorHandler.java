@@ -15,5 +15,7 @@ public class DecoratorHandler {
     GamingAccountInterface baseGamer3 = new GamingAccount("Dimitri", false);
     StandardGamingAccount standardGamer = new StandardGamingAccount(baseGamer3);
     standardGamer.playGameDLCForAGivenTime(5000);
+
+    standardGamer.playGame();
   }
 }
