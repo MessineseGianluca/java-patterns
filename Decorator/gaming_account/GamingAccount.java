@@ -15,7 +15,7 @@ public class GamingAccount implements GamingAccountInterface {
       System.out.println(username + " can't play because it's banned!");
     } else if (!isPlaying) {
       System.out.println(username + " is playing the game.");
-      isPlaying = true;
+      setIsPlaying(true);
     } else {
       System.out.println(username + " is already playing.");
     }
@@ -25,8 +25,15 @@ public class GamingAccount implements GamingAccountInterface {
     return username;
   }
 
+  public boolean isPlaying() {
+    return isPlaying;
+  }
+
   public boolean isBanned() {
     return banned;
   }
 
+  public void setIsPlaying(boolean isPlaying) {
+    this.isPlaying = isPlaying;
+  }
 }
