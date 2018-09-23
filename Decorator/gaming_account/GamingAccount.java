@@ -1,4 +1,4 @@
-package account;
+package gaming_account;
 
 public class GamingAccount implements GamingAccountInterface {
   private String username;

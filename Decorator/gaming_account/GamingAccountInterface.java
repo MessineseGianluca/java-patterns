@@ -1,4 +1,4 @@
-package account;
+package gaming_account;
 
 public interface GamingAccountInterface {
   public void playGame();

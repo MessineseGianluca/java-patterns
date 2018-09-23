@@ -1,6 +1,7 @@
 package standard_gaming_account;
 
 import gaming_account.GamingAccountInterface;
+import gaming_account_extension.*;
 import java.util.Timer;
 
 public class StandardGamingAccount extends GamingAccountDecorator {
@@ -10,19 +11,19 @@ public class StandardGamingAccount extends GamingAccountDecorator {
 
   public void playGameDLCForAGivenTime(int delay) {
     if (isBanned()) {
-      System.out.println(username + " can't play because it's banned!");
+      System.out.println(getUsername() + " can't play because it's banned!");
     } else if (!isPlaying()) {
-      System.out.println(username + " is playing game DLC trial.");
+      System.out.println(getUsername() + " is playing game DLC trial.");
       playForAGivenTime(delay);
     } else {
-      System.out.println(username + " can't play game DLC trial because it's already playing.");
+      System.out.println(getUsername() + " can't play game DLC trial because it's already playing.");
     }
   }
 
   public void playForAGivenTime(int delay) {
     setIsPlaying(true);
-    EndGameDLC endGameTask = new EndGameDLC();
+    EndGameDLC endGameTask = new EndGameDLC(this);
     Timer endGameTimer = new Timer();
-    endGameTimer.schedule(EndGameDLC, delay);
+    endGameTimer.schedule(endGameTask, delay);
   }
 }

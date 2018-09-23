@@ -1,6 +1,7 @@
 package premium_gaming_account;
 
 import gaming_account.GamingAccountInterface;
+import gaming_account_extension.*;
 
 public class PremiumGamingAccount extends GamingAccountDecorator {  
   
@@ -10,12 +11,12 @@ public class PremiumGamingAccount extends GamingAccountDecorator {
   
   public void playGameDLC() {
     if(isBanned()) {
-      System.out.println(username + " can't play because it's banned!");
+      System.out.println(getUsername() + " can't play because it's banned!");
     } else if(!isPlaying()) {
-      System.out.println(username + " is playing game DLC.");
+      System.out.println(getUsername() + " is playing game DLC.");
       setIsPlaying(true);
     } else {
-      System.out.println(username + " can't play DLC because it's already playing.");
+      System.out.println(getUsername() + " can't play DLC because it's already playing.");
     }   
   }
 }

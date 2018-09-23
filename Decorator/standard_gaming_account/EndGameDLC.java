@@ -1,6 +1,7 @@
 package standard_gaming_account;
 
 import java.util.TimerTask;
+import gaming_account_extension.*;
 
 class EndGameDLC extends TimerTask {
   GamingAccountDecorator game;
