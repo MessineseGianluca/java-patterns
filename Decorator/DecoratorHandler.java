@@ -8,12 +8,12 @@ public class DecoratorHandler {
     GamingAccountInterface baseGamer = new GamingAccount("Boris", false);
     baseGamer.playGame();
 
-    GamingAccountInterface baseGamer2 = new GamingAccount("Dimitri", false);
-    StandardGamingAccount standardGamer = new StandardGamingAccount(baseGamer2);
-    standardGamer.playGameDLCForAGivenTime(10000);
-
-    GamingAccountInterface baseGamer3 = new GamingAccount("Kartoshka97", false);
-    PremiumGamingAccount premiumGamer = new PremiumGamingAccount(baseGamer3);
+    GamingAccountInterface baseGamer2 = new GamingAccount("Kartoshka97", false);
+    PremiumGamingAccount premiumGamer = new PremiumGamingAccount(baseGamer2);
     premiumGamer.playGameDLC();
+
+    GamingAccountInterface baseGamer3 = new GamingAccount("Dimitri", false);
+    StandardGamingAccount standardGamer = new StandardGamingAccount(baseGamer3);
+    standardGamer.playGameDLCForAGivenTime(5000);
   }
 }
