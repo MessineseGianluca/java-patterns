@@ -28,7 +28,7 @@ public class StandardGamingAccount extends GamingAccountDecorator {
     TimerTask endGameTask = new TimerTask() {
       @Override
       public void run() {
-        System.out.println("Game DLC trial time expired.");
+        System.out.println("Game DLC trial time expired for " + getUsername());
         setIsPlaying(false);
         endGameTimer.cancel();
       }
