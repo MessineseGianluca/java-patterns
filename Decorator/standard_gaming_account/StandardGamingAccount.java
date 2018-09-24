@@ -3,6 +3,7 @@ package standard_gaming_account;
 import gaming_account.GamingAccountInterface;
 import gaming_account_extension.*;
 import java.util.Timer;
+import java.util.TimerTask;
 import java.lang.Thread;
 
 public class StandardGamingAccount extends GamingAccountDecorator {
@@ -23,9 +24,15 @@ public class StandardGamingAccount extends GamingAccountDecorator {
 
   public void playForAGivenTime(int delay) {
     setIsPlaying(true);
-
     Timer endGameTimer = new Timer();
-    EndGameDLC endGameTask = new EndGameDLC(endGameTimer, this);
+    TimerTask endGameTask = new TimerTask() {
+      @Override
+      public void run() {
+        System.out.println("Game DLC trial time expired.");
+        setIsPlaying(false);
+        endGameTimer.cancel();
+      }
+    }; 
     endGameTimer.schedule(endGameTask, delay);
   }
 }
