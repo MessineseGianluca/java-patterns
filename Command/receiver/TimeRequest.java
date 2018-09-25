@@ -7,16 +7,16 @@ public class TimeRequest {
   public static void getCountryFormattedTime(String continent, String capital) {
     String[] fields = { "formatted" };
     String res = formatURLAndSendRequest(continent, capital, fields);
-    String value = getFieldValue(res, fields[0]);
-    String stringToPrint = "Time for " + capital + ": " + value;
+    String[] values = getFieldsValues(res, fields);
+    String stringToPrint = "Time for " + capital + ": " + values[0];
     System.out.println(stringToPrint);
   }
 
   public static void getCountryTimeZoneAbbreviation(String continent, String capital) {
     String[] fields = { "abbreviation" };
     String res = formatURLAndSendRequest(continent, capital, fields);
-    String value = getFieldValue(res, fields[0]);
-    String stringToPrint = "Time zone abbreviation for " + capital + ": " + value;
+    String[] values = getFieldsValues(res, fields);
+    String stringToPrint = "Time zone abbreviation for " + capital + ": " + values[0];
     System.out.println(stringToPrint);
   }
 
@@ -36,20 +36,23 @@ public class TimeRequest {
     return res;
   }
 
-  private static String getFieldValue(String wholeString, String field) {
-    String value = "";
-    int fieldPosition = wholeString.indexOf(field);
-
-    // it considers ":" after field name
-    int valuePosition = fieldPosition + field.length() + 3;
-
-    int i = valuePosition;
-
-    while (wholeString.charAt(i) != '\"') {
-      value += wholeString.charAt(i);
-      i++;
+  private static String[] getFieldsValues(String wholeString, String fields[]) {
+    String[] values = new String[fields.length];
+    
+    int fieldIndex = 0;
+    for(String field:fields) {
+      int fieldPosition = wholeString.indexOf(field);
+      // it considers ":" after field name
+      int valuePosition = fieldPosition + field.length() + 3;
+      int i = valuePosition;
+      String value = "";
+      while (wholeString.charAt(i) != '\"') {
+        value += wholeString.charAt(i);
+        i++;
+      }
+      values[fieldIndex] = value;
+      fieldIndex++;
     }
-
-    return value;
+    return values;
   }
 }
