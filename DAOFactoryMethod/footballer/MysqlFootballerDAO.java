@@ -13,7 +13,7 @@ public class MysqlFootballerDAO implements FootballerDAO {
 
   public boolean insertFootballer(FootballerTO footballer) {
     try {
-      Connection conn = MysqlFootballerDAO.getConnection();
+      Connection conn = MysqlDAOFactory.getConnection();
       PreparedStatement prepStatement = conn.prepareStatement(insertSQL);
       prepStatement.setInt(1, footballer.getId());
       prepStatement.setString(2, footballer.getName());
@@ -30,7 +30,7 @@ public class MysqlFootballerDAO implements FootballerDAO {
 
   public boolean updateFootballer(FootballerTO footballer) {
     try {
-      Connection conn = MysqlFootballerDAO.getConnection();
+      Connection conn = MysqlDAOFactory.getConnection();
       PreparedStatement prepStatement = conn.prepareStatement(updateSQL);
       prepStatement.setString(1, footballer.getName());
       prepStatement.setString(2, footballer.getNationality());
@@ -47,7 +47,7 @@ public class MysqlFootballerDAO implements FootballerDAO {
 
   public boolean deleteFootballer(int footballerId) {
     try {
-      Connection conn = MysqlFootballerDAO.getConnection();
+      Connection conn = MysqlDAOFactory.getConnection();
       PreparedStatement prepStatement = conn.prepareStatement(deleteSQL);
       prepStatement.setInt(1, footballerId);
       int deletedRows = prepStatement.executeUpdate();
@@ -62,7 +62,7 @@ public class MysqlFootballerDAO implements FootballerDAO {
 
   public FootballerTO getFootballerInfo(int footballerId) {
     try {
-      Connection conn = MysqlFootballerDAO.getConnection();
+      Connection conn = MysqlDAOFactory.getConnection();
       PreparedStatement prepStatement = conn.prepareStatement(readSQL);
       prepStatement.setInt(1, footballerId);
       ResultSet result = prepStatement.executeQuery();
