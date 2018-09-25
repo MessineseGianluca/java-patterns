@@ -5,7 +5,7 @@ public interface FootballerDAO {
 
   public boolean updateFootballer(FootballerTO footballer);
 
-  public boolean deleteFootballer(int footballerID);
+  public boolean deleteFootballer(int footballerId);
 
-  public FootballerTO getFootballerInfo();
+  public FootballerTO getFootballerInfo(int FootballerId);
 }
