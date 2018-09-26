@@ -12,7 +12,7 @@ public class DAOFactoryMethodHandler {
     FootballTeamTO team = new FootballTeamTO(1, "Juventus");
     FootballerTO footballer = new FootballerTO(1, "Cristiano Ronaldo", "Portuguese", 1);
 
-    teamDAO.insert(team);
-    footballerDAO.insert(footballer);
+    teamDAO.insertFootballTeam(team);
+    footballerDAO.insertFootballer(footballer);
   }
 }
