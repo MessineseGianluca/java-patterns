@@ -1,8 +1,7 @@
 package football_team;
 
-import java.sql.PreparedStatement;
-
-import football_team.FootballTeamTO;
+import java.sql.*;
+import dao_factory.MysqlDAOFactory;
 
 public class MysqlFootballTeamDAO implements FootballTeamDAO {
   private String tableName = "team";
