@@ -8,22 +8,24 @@ public class FootballerTO implements Serializable {
   private int id;
   private String name;
   private String nationality;
+  private int teamId;
 
   public FootballerTO() {
   }
 
-  public FootballerTO(int id, String name, String nationality) {
-    initData(id, name, nationality);
+  public FootballerTO(int id, String name, String nationality, int teamId) {
+    initData(id, name, nationality, teamId);
   }
 
   public FootballerTO(FootballerTO footballer) {
-    initData(footballer.getId(), footballer.getName(), footballer.getNationality());
+    initData(footballer.getId(), footballer.getName(), footballer.getNationality(), footballer.getTeamId());
   }
 
-  public void initData(int id, String name, String nationality) {
+  public void initData(int id, String name, String nationality, int teamId) {
     this.id = id;
     this.name = name;
     this.nationality = nationality;
+    this.teamId = teamId;
   }
 
   public void setId(int id) {
@@ -38,6 +40,10 @@ public class FootballerTO implements Serializable {
     this.nationality = nationality;
   }
 
+  public void setTeam(int teamId) {
+    this.teamId = teamId;
+  }
+
   public int getId() {
     return id;
   }
@@ -48,6 +54,10 @@ public class FootballerTO implements Serializable {
 
   public String getNationality() {
     return nationality;
+  }
+
+  public int getTeamId() {
+    return teamId;
   }
 
   public FootballerTO getData() {

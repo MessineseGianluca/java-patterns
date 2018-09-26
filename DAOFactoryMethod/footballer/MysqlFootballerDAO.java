@@ -1,13 +1,15 @@
 package footballer;
 
 import dao_factory.MysqlDAOFactory;
+import footballer.FootballerTO;
+
 import java.sql.*;
 
 public class MysqlFootballerDAO implements FootballerDAO {
   private String tableName = "footballer";
 
-  private String insertSQL = "INSERT INTO " + tableName + "(id, name, nationality) VALUES (?, ?, ?)";
-  private String updateSQL = "UPDATE" + tableName + " SET name = ?, nationality = ? WHERE id = ?";
+  private String insertSQL = "INSERT INTO " + tableName + "(id, name, nationality, teamId) VALUES (?, ?, ?, ?)";
+  private String updateSQL = "UPDATE" + tableName + " SET name = ?, nationality = ?, set team = ? WHERE id = ?";
   private String deleteSQL = "DELETE FROM " + tableName + " WHERE id = ?";
   private String readSQL = "SELECT * FROM " + tableName + " WHERE id = ?";
 
@@ -18,6 +20,7 @@ public class MysqlFootballerDAO implements FootballerDAO {
       prepStatement.setInt(1, footballer.getId());
       prepStatement.setString(2, footballer.getName());
       prepStatement.setString(3, footballer.getNationality());
+      prepStatement.setInt(4, footballer.getTeamId());
       int insertedRows = prepStatement.executeUpdate();
       boolean result = (insertedRows > 0);
     } catch (SQLException sqlE) {
@@ -35,6 +38,7 @@ public class MysqlFootballerDAO implements FootballerDAO {
       prepStatement.setString(1, footballer.getName());
       prepStatement.setString(2, footballer.getNationality());
       prepStatement.setInt(3, footballer.getId());
+      prepStatement.setInt(4, footballer.getTeamId());
       int updatedRows = prepStatement.executeUpdate();
       boolean result = (updatedRows > 0);
     } catch (SQLException sqlE) {
@@ -67,7 +71,7 @@ public class MysqlFootballerDAO implements FootballerDAO {
       prepStatement.setInt(1, footballerId);
       ResultSet result = prepStatement.executeQuery();
       if (result.next()) {
-        FootballerTO footballer = new FootballerTO(result.getInt(1), result.getString(2), result.getString(3));
+        FootballerTO footballer = new FootballerTO(result.getInt(1), result.getString(2), result.getString(3), result.getInt(4));
       }
     } catch (SQLException sqlE) {
       sqlE.printStackTrace();
