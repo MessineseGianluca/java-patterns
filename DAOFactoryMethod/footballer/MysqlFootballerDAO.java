@@ -14,15 +14,19 @@ public class MysqlFootballerDAO implements FootballerDAO {
   private String readSQL = "SELECT * FROM " + tableName + " WHERE id = ?";
 
   public boolean insertFootballer(FootballerTO footballer) {
+    Connection conn = null;
+    PreparedStatement prepStatement = null;
+    boolean result = false;
+
     try {
-      Connection conn = MysqlDAOFactory.getConnection();
-      PreparedStatement prepStatement = conn.prepareStatement(insertSQL);
+      conn = MysqlDAOFactory.getConnection();
+      prepStatement = conn.prepareStatement(insertSQL);
       prepStatement.setInt(1, footballer.getId());
       prepStatement.setString(2, footballer.getName());
       prepStatement.setString(3, footballer.getNationality());
       prepStatement.setInt(4, footballer.getTeamId());
       int insertedRows = prepStatement.executeUpdate();
-      boolean result = (insertedRows > 0);
+      result = (insertedRows > 0);
     } catch (SQLException sqlE) {
       sqlE.printStackTrace();
     } finally {
@@ -32,15 +36,19 @@ public class MysqlFootballerDAO implements FootballerDAO {
   }
 
   public boolean updateFootballer(FootballerTO footballer) {
+    Connection conn = null;
+    PreparedStatement prepStatement = null;
+    boolean result = false;
+
     try {
-      Connection conn = MysqlDAOFactory.getConnection();
-      PreparedStatement prepStatement = conn.prepareStatement(updateSQL);
+      conn = MysqlDAOFactory.getConnection();
+      prepStatement = conn.prepareStatement(updateSQL);
       prepStatement.setString(1, footballer.getName());
       prepStatement.setString(2, footballer.getNationality());
       prepStatement.setInt(3, footballer.getId());
       prepStatement.setInt(4, footballer.getTeamId());
       int updatedRows = prepStatement.executeUpdate();
-      boolean result = (updatedRows > 0);
+      result = (updatedRows > 0);
     } catch (SQLException sqlE) {
       sqlE.printStackTrace();
     } finally {
@@ -50,12 +58,16 @@ public class MysqlFootballerDAO implements FootballerDAO {
   }
 
   public boolean deleteFootballer(int footballerId) {
+    Connection conn = null;
+    PreparedStatement prepStatement = null;
+    boolean result = false;
+
     try {
-      Connection conn = MysqlDAOFactory.getConnection();
-      PreparedStatement prepStatement = conn.prepareStatement(deleteSQL);
+      conn = MysqlDAOFactory.getConnection();
+      prepStatement = conn.prepareStatement(deleteSQL);
       prepStatement.setInt(1, footballerId);
       int deletedRows = prepStatement.executeUpdate();
-      boolean result = (deletedRows > 0);
+      result = (deletedRows > 0);
     } catch (SQLException sqlE) {
       sqlE.printStackTrace();
     } finally {
@@ -65,14 +77,18 @@ public class MysqlFootballerDAO implements FootballerDAO {
   }
 
   public FootballerTO getFootballerInfo(int footballerId) {
+    Connection conn = null;
+    PreparedStatement prepStatement = null;
+    ResultSet result = null;
+    FootballerTO footballer = null;
+
     try {
-      Connection conn = MysqlDAOFactory.getConnection();
-      PreparedStatement prepStatement = conn.prepareStatement(readSQL);
+      conn = MysqlDAOFactory.getConnection();
+      prepStatement = conn.prepareStatement(readSQL);
       prepStatement.setInt(1, footballerId);
-      ResultSet result = prepStatement.executeQuery();
+      result = prepStatement.executeQuery();
       if (result.next()) {
-        FootballerTO footballer = new FootballerTO(result.getInt(1), result.getString(2), result.getString(3),
-            result.getInt(4));
+        footballer = new FootballerTO(result.getInt(1), result.getString(2), result.getString(3), result.getInt(4));
       }
     } catch (SQLException sqlE) {
       sqlE.printStackTrace();
@@ -82,12 +98,21 @@ public class MysqlFootballerDAO implements FootballerDAO {
     return footballer;
   }
 
-  private finallyBlock(Object... objectsToClose) {
-    try {  
-      for(Object object:objectsToClose) {
-        object.close();
-      }
-    } catch(Exception e) {
+  private void finallyBlock(Connection conn, PreparedStatement prepStatement) {
+    try {
+      conn.close();
+      prepStatement.close();
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
+
+  private void finallyBlock(Connection conn, PreparedStatement prepStatement, ResultSet result) {
+    try {
+      conn.close();
+      prepStatement.close();
+      result.close();
+    } catch (Exception e) {
       e.printStackTrace();
     }
   }
