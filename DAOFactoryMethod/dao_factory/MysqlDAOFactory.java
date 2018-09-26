@@ -12,8 +12,6 @@ public class MysqlDAOFactory extends DAOFactory {
   private static final String USER_ID = "root";
   private static final String PASSWORD = "";
 
-  String DRIVER_CLASS_NAME = "org.gjt.mm.mysql.Driver";
-
   private static Connection conn = null;
 
   public static Connection getConnection() {
