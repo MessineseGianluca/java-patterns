@@ -71,14 +71,15 @@ public class MysqlFootballerDAO implements FootballerDAO {
       prepStatement.setInt(1, footballerId);
       ResultSet result = prepStatement.executeQuery();
       if (result.next()) {
-        FootballerTO footballer = new FootballerTO(result.getInt(1), result.getString(2), result.getString(3), result.getInt(4));
+        FootballerTO footballer = new FootballerTO(result.getInt(1), result.getString(2), result.getString(3),
+            result.getInt(4));
       }
     } catch (SQLException sqlE) {
       sqlE.printStackTrace();
     } finally {
       finallyBlock(conn, prepStatement, result);
     }
-    return result;
+    return footballer;
   }
 
   private finallyBlock(Object... objectsToClose) {

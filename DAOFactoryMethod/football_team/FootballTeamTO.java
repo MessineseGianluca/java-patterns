@@ -7,24 +7,21 @@ public class FootballTeamTO implements Serializable {
   private static final long serialVersionUID = 1L;
   private int id;
   private String name;
-  private FootballerTO[] footballers;
 
   public FootballTeamTO() {
   }
 
-  public FootballTeamTO(int id, String name, FootballerTO[] footballers) {
-    initData(id, name, footballers);
+  public FootballTeamTO(int id, String name) {
+    initData(id, name);
   }
 
   public FootballTeamTO(FootballTeamTO footballTeam) {
     initData(footballer.getId(), footballer.getName(), footballTeam.getFootballers());
   }
 
-  public void initData(int id, String name, FootballerTO[] footballers) {
+  public void initData(int id, String name) {
     this.id = id;
     this.name = name;
-    this.footballers = footballers;
-
   }
 
   public void setId(int id) {
@@ -41,10 +38,6 @@ public class FootballTeamTO implements Serializable {
 
   public String getName() {
     return name;
-  }
-
-  public FootballerTO[] getFootballers() {
-    return footballers;
   }
 
   public FootballTeamTO getData() {
