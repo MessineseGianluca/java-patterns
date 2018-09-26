@@ -13,9 +13,9 @@ public class MysqlDAOFactory extends DAOFactory {
   private static final String PASSWORD = "";
 
   String DRIVER_CLASS_NAME = "org.gjt.mm.mysql.Driver";
-  
+
   private static Connection conn = null;
-  
+
   public static Connection getConnection() {
     try {
       String url = DBMS + "://" + SERVER + ":" + PORT + "/" + DATABASE + "?user=" + USER_ID + "&password=" + PASSWORD;
@@ -28,11 +28,11 @@ public class MysqlDAOFactory extends DAOFactory {
     }
     return conn;
   }
-  
+
   public FootballerDAO getFootballerDAO() {
     return new MysqlFootballerDAO();
   }
-    
+
   public FootballTeamDAO getFootballTeamDAO() {
     return new MysqlFootballTeamDAO();
   }
