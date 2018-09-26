@@ -17,7 +17,7 @@ public class MysqlDAOFactory extends DAOFactory {
   public static Connection getConnection() {
     try {
       String url = DBMS + "://" + SERVER + ":" + PORT + "/" + DATABASE + "?user=" + USER_ID + "&password=" + PASSWORD;
-      Class.forName("com.mysql.jdbc.Driver");
+      Class.forName("com.mysql.cj.jdbc.Driver");
       conn = DriverManager.getConnection(url);
     } catch (SQLException sqlE) {
       sqlE.printStackTrace();
