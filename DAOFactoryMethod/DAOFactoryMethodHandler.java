@@ -1,8 +1,8 @@
 import dao_factory.*;
+import football_team.*;
 import footballer.*;
-import footballTeam.*;
 
-public class DAOFactoryHandler {
+public class DAOFactoryMethodHandler {
   public static void main(String[] args) {
     DAOFactory factory = new MysqlDAOFactory();
 
