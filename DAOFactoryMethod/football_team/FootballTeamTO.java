@@ -16,7 +16,7 @@ public class FootballTeamTO implements Serializable {
   }
 
   public FootballTeamTO(FootballTeamTO footballTeam) {
-    initData(footballer.getId(), footballer.getName(), footballTeam.getFootballers());
+    initData(footballTeam.getId(), footballTeam.getName());
   }
 
   public void initData(int id, String name) {

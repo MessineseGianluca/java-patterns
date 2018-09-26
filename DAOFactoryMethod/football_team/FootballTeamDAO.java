@@ -7,5 +7,5 @@ public interface FootballTeamDAO {
 
   public boolean deleteFootballTeam(int teamId);
 
-  public FootballTeamTO getFooballTeamInfo();
+  public FootballTeamTO getFootballTeamInfo(int teamId);
 }
