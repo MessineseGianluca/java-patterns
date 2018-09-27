@@ -17,11 +17,21 @@ public class FootballerTO implements Serializable {
     initData(id, name, nationality, teamId);
   }
 
+  public FootballerTO(String name, String nationality, int teamId) {
+    initData(name, nationality, teamId);
+  }
+
   public FootballerTO(FootballerTO footballer) {
     initData(footballer.getId(), footballer.getName(), footballer.getNationality(), footballer.getTeamId());
   }
 
-  public void initData(int id, String name, String nationality, int teamId) {
+  private void initData(String name, String nationality, int teamId) {
+    this.name = name;
+    this.nationality = nationality;
+    this.teamId = teamId;
+  }
+
+  private void initData(int id, String name, String nationality, int teamId) {
     this.id = id;
     this.name = name;
     this.nationality = nationality;

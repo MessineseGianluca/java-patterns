@@ -15,11 +15,19 @@ public class FootballTeamTO implements Serializable {
     initData(id, name);
   }
 
+  public FootballTeamTO(String name) {
+    initData(name);
+  }
+
   public FootballTeamTO(FootballTeamTO footballTeam) {
     initData(footballTeam.getId(), footballTeam.getName());
   }
 
-  public void initData(int id, String name) {
+  private void initData(String name) {
+    this.name = name;
+  }
+
+  private void initData(int id, String name) {
     this.id = id;
     this.name = name;
   }

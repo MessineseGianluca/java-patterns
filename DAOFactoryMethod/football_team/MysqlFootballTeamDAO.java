@@ -6,7 +6,7 @@ import dao_factory.MysqlDAOFactory;
 public class MysqlFootballTeamDAO implements FootballTeamDAO {
   private String tableName = "team";
 
-  private String insertSQL = "INSERT INTO " + tableName + "(id, name) VALUES (?, ?)";
+  private String insertSQL = "INSERT INTO " + tableName + "(name) VALUES (?)";
   private String deleteSQL = "DELETE FROM " + tableName + " WHERE id = ?";
   private String updateSQL = "UPDATE" + tableName + " SET name = ? WHERE id = ?";
   private String selectSQL = "SELECT * FROM " + tableName + " WHERE id = ?";
@@ -19,8 +19,7 @@ public class MysqlFootballTeamDAO implements FootballTeamDAO {
     try {
       conn = MysqlDAOFactory.getConnection();
       prepStatement = conn.prepareStatement(insertSQL);
-      prepStatement.setInt(1, team.getId());
-      prepStatement.setString(2, team.getName());
+      prepStatement.setString(1, team.getName());
       int insertedRows = prepStatement.executeUpdate();
       result = (insertedRows > 0);
     } catch (SQLException sqlE) {
@@ -38,7 +37,7 @@ public class MysqlFootballTeamDAO implements FootballTeamDAO {
 
     try {
       conn = MysqlDAOFactory.getConnection();
-      prepStatement = conn.prepareStatement(insertSQL);
+      prepStatement = conn.prepareStatement(deleteSQL);
       prepStatement.setInt(1, teamId);
       int insertedRows = prepStatement.executeUpdate();
       result = (insertedRows > 0);

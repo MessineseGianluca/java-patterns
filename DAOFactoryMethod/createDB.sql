@@ -1,3 +1,4 @@
+DROP DATABASE IF EXISTS footballers;
 CREATE DATABASE footballers;
 
 use footballers;
@@ -6,7 +7,6 @@ CREATE TABLE team (
   id INT PRIMARY KEY AUTO_INCREMENT,
   name varchar(256) NOT NULL
 );
-
 
 CREATE TABLE footballer (
   id INT PRIMARY KEY AUTO_INCREMENT,

@@ -8,10 +8,10 @@ import java.sql.*;
 public class MysqlFootballerDAO implements FootballerDAO {
   private String tableName = "footballer";
 
-  private String insertSQL = "INSERT INTO " + tableName + "(id, name, nationality, teamId) VALUES (?, ?, ?, ?)";
+  private String insertSQL = "INSERT INTO " + tableName + "(name, nationality, teamId) VALUES (?, ?, ?)";
   private String updateSQL = "UPDATE" + tableName + " SET name = ?, nationality = ?, set team = ? WHERE id = ?";
   private String deleteSQL = "DELETE FROM " + tableName + " WHERE id = ?";
-  private String readSQL = "SELECT * FROM " + tableName + " WHERE id = ?";
+  private String selectSQL = "SELECT * FROM " + tableName + " WHERE id = ?";
 
   public boolean insertFootballer(FootballerTO footballer) {
     Connection conn = null;
@@ -21,10 +21,9 @@ public class MysqlFootballerDAO implements FootballerDAO {
     try {
       conn = MysqlDAOFactory.getConnection();
       prepStatement = conn.prepareStatement(insertSQL);
-      prepStatement.setInt(1, footballer.getId());
-      prepStatement.setString(2, footballer.getName());
-      prepStatement.setString(3, footballer.getNationality());
-      prepStatement.setInt(4, footballer.getTeamId());
+      prepStatement.setString(1, footballer.getName());
+      prepStatement.setString(2, footballer.getNationality());
+      prepStatement.setInt(3, footballer.getTeamId());
       int insertedRows = prepStatement.executeUpdate();
       result = (insertedRows > 0);
     } catch (SQLException sqlE) {
@@ -84,7 +83,7 @@ public class MysqlFootballerDAO implements FootballerDAO {
 
     try {
       conn = MysqlDAOFactory.getConnection();
-      prepStatement = conn.prepareStatement(readSQL);
+      prepStatement = conn.prepareStatement(selectSQL);
       prepStatement.setInt(1, footballerId);
       result = prepStatement.executeQuery();
       if (result.next()) {

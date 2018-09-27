@@ -9,8 +9,8 @@ public class DAOFactoryMethodHandler {
     FootballTeamDAO teamDAO = factory.getFootballTeamDAO();
     FootballerDAO footballerDAO = factory.getFootballerDAO();
 
-    FootballTeamTO team = new FootballTeamTO(1, "Juventus");
-    FootballerTO footballer = new FootballerTO(1, "Cristiano Ronaldo", "Portuguese", 1);
+    FootballTeamTO team = new FootballTeamTO("Juventus");
+    FootballerTO footballer = new FootballerTO("Cristiano Ronaldo", "Portuguese", 1);
 
     teamDAO.insertFootballTeam(team);
     footballerDAO.insertFootballer(footballer);
