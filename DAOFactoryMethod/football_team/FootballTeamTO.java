@@ -1,7 +1,6 @@
 package football_team;
 
 import java.io.Serializable;
-import footballer.FootballerTO;
 
 public class FootballTeamTO implements Serializable {
   private static final long serialVersionUID = 1L;
@@ -50,5 +49,9 @@ public class FootballTeamTO implements Serializable {
 
   public FootballTeamTO getData() {
     return new FootballTeamTO(this);
+  }
+
+  public String toString() {
+    return this.getId() + " " + this.getName() + " " + this.getNationality() + " " + this.getTeamId();
   }
 }

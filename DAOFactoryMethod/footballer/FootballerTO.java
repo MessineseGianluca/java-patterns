@@ -73,4 +73,8 @@ public class FootballerTO implements Serializable {
   public FootballerTO getData() {
     return new FootballerTO(this);
   }
+
+  public String toString() {
+    return this.getId() + " " + this.getName();
+  }
 }
