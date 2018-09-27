@@ -1,5 +1,7 @@
 package footballer;
 
+import java.util.List;
+
 public interface FootballerDAO {
   public boolean insertFootballer(FootballerTO footballer);
 
@@ -8,4 +10,6 @@ public interface FootballerDAO {
   public boolean deleteFootballer(int footballerId);
 
   public FootballerTO getFootballerInfo(int FootballerId);
+
+  public List<FootballerTO> getFootballersOfTeam(int teamId);
 }

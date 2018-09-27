@@ -2,6 +2,8 @@ package footballer;
 
 import dao_factory.MysqlDAOFactory;
 import footballer.FootballerTO;
+import java.util.List;
+import java.util.LinkedList;
 
 import java.sql.*;
 
@@ -12,6 +14,7 @@ public class MysqlFootballerDAO implements FootballerDAO {
   private String updateSQL = "UPDATE" + tableName + " SET name = ?, nationality = ?, set team = ? WHERE id = ?";
   private String deleteSQL = "DELETE FROM " + tableName + " WHERE id = ?";
   private String selectSQL = "SELECT * FROM " + tableName + " WHERE id = ?";
+  private String selectFootballersOfTeamSQL = "SELECT * FROM " + tableName + " WHERE teamId = ?";
 
   public boolean insertFootballer(FootballerTO footballer) {
     Connection conn = null;
@@ -97,6 +100,30 @@ public class MysqlFootballerDAO implements FootballerDAO {
     return footballer;
   }
 
+  public List<FootballerTO> getFootballersOfTeam(int teamId) {
+    Connection conn = null;
+    PreparedStatement prepStatement = null;
+    ResultSet result = null;
+    List<FootballerTO> footballers = new LinkedList<FootballerTO>();
+
+    try {
+      conn = MysqlDAOFactory.getConnection();
+      prepStatement = conn.prepareStatement(selectFootballersOfTeamSQL);
+      prepStatement.setInt(1, teamId);
+      result = prepStatement.executeQuery();
+      while (result.next()) {
+        FootballerTO footballer = new FootballerTO(result.getInt(1), result.getString(2), result.getString(3),
+            result.getInt(4));
+        footballers.add(footballer);
+      }
+    } catch (SQLException sqlE) {
+      sqlE.printStackTrace();
+    } finally {
+      finallyBlock(conn, prepStatement, result);
+    }
+    return footballers;
+  }
+
   private void finallyBlock(Connection conn, PreparedStatement prepStatement) {
     try {
       conn.close();
@@ -115,4 +142,5 @@ public class MysqlFootballerDAO implements FootballerDAO {
       e.printStackTrace();
     }
   }
+
 }

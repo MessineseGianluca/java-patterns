@@ -1,3 +1,6 @@
+import java.util.List;
+import java.util.Iterator;
+
 import dao_factory.*;
 import football_team.*;
 import footballer.*;
@@ -14,5 +17,13 @@ public class DAOFactoryMethodHandler {
 
     teamDAO.insertFootballTeam(team);
     footballerDAO.insertFootballer(footballer);
+
+    List<FootballerTO> footballersOfJuventus = footballerDAO.getFootballersOfTeam(1);
+
+    Iterator<FootballerTO> i = footballersOfJuventus.iterator();
+    while (i.hasNext()) {
+      FootballerTO f = i.next();
+      System.out.println(f.getId() + " " + f.getName() + " " + f.getNationality());
+    }
   }
 }
