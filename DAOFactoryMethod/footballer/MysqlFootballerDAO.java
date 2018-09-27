@@ -11,7 +11,7 @@ public class MysqlFootballerDAO implements FootballerDAO {
   private String tableName = "footballer";
 
   private String insertSQL = "INSERT INTO " + tableName + "(name, nationality, teamId) VALUES (?, ?, ?)";
-  private String updateSQL = "UPDATE" + tableName + " SET name = ?, nationality = ?, set team = ? WHERE id = ?";
+  private String updateSQL = "UPDATE " + tableName + " SET name = ?, nationality = ?, teamId = ? WHERE id = ?";
   private String deleteSQL = "DELETE FROM " + tableName + " WHERE id = ?";
   private String selectSQL = "SELECT * FROM " + tableName + " WHERE id = ?";
   private String selectFootballersOfTeamSQL = "SELECT * FROM " + tableName + " WHERE teamId = ?";

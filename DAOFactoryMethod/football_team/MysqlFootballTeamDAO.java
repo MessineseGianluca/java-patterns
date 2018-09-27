@@ -8,7 +8,7 @@ public class MysqlFootballTeamDAO implements FootballTeamDAO {
 
   private String insertSQL = "INSERT INTO " + tableName + "(name) VALUES (?)";
   private String deleteSQL = "DELETE FROM " + tableName + " WHERE id = ?";
-  private String updateSQL = "UPDATE" + tableName + " SET name = ? WHERE id = ?";
+  private String updateSQL = "UPDATE " + tableName + " SET name = ? WHERE id = ?";
   private String selectSQL = "SELECT * FROM " + tableName + " WHERE id = ?";
 
   public boolean insertFootballTeam(FootballTeamTO team) {

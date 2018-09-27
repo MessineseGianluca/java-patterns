@@ -13,7 +13,7 @@ public class DAOFactoryMethodHandler {
     boolean isInserted = footballerDAO.insertFootballer(footballer);
     isInserted &= footballerDAO.insertFootballer(footballer2);
     if (isInserted) {
-      System.out.println("Footballers added.");
+      System.out.println("Footballers inserted.");
     }
   }
 
@@ -56,24 +56,24 @@ public class DAOFactoryMethodHandler {
     }
   }
 
-  private static void deleteTeam(footballTeamDAO teamDAO, int teamId) {
-    boolean isDeleted = footballTeamDAO.deleteFootballTeam(2);
+  private static void deleteTeam(FootballTeamDAO teamDAO, int teamId) {
+    boolean isDeleted = teamDAO.deleteFootballTeam(2);
     if (isDeleted) {
       System.out.println("Team deleted.");
     }
   }
 
-  private static void changeTeamName(FootballTeamDao teamDAO, String newName, int teamId) {
+  private static void changeTeamName(FootballTeamDAO teamDAO, String newName, int teamId) {
     FootballTeamTO team = teamDAO.getFootballTeamInfo(teamId);
     team.setName(newName);
-    boolean isChanged = footballTeamDAO.updateFootballTeam(team);
+    boolean isChanged = teamDAO.updateFootballTeam(team);
     if (isChanged) {
       System.out.println("Team name changed.");
     }
   }
 
-  private static void printTeamInfo(FootballTeamDao teamDAO, int teamId) {
-    FootballTeamTO team = teamDAO.getFootballTeamInfo(teamId)
+  private static void printTeamInfo(FootballTeamDAO teamDAO, int teamId) {
+    FootballTeamTO team = teamDAO.getFootballTeamInfo(teamId);
     System.out.println(team);
   }
 
@@ -84,22 +84,20 @@ public class DAOFactoryMethodHandler {
     FootballerDAO footballerDAO = factory.getFootballerDAO();
 
     insertTeams(teamDAO);
-    insertFootballers(footballersDAO);
+    insertFootballers(footballerDAO);
 
     printFootballersOfTeam(footballerDAO, 1); // prints footballers of Juventus
 
-    deleteAFootballer(footballerDAO, 1); // deletes Cristiano Ronaldo
-
     movePlayerToAnotherTeam(footballerDAO, 2, 2); // move Dybala to Milan
-    movePlayerToAnotherTeam(footballerDAO, 2, 1); // move Dybala to Juventus
-
     printFootballersOfTeam(footballerDAO, 2); // prints footballers of Milan
+    
+    deleteAFootballer(footballerDAO, 2); // deletes Cristiano Dybala
+
 
     changeTeamName(teamDAO, "RealMadrid", 1); // change Juventus name
 
-    deleteTeam(footballTeamDAO, 2); // delete Milan
+    deleteTeam(teamDAO, 2); // delete Milan
 
     printTeamInfo(teamDAO, 1); // prints Real Madrid info
-
   }
 }
