@@ -5,13 +5,7 @@ public interface FootballTeamDAO {
 
   public boolean updateFootballTeam(FootballTeamTO team);
 
-  public boolean deleteFootballTeam(int teamID);
+  public boolean deleteFootballTeam(int teamId);
 
-  public FootballTeamTO getFooballTeamInfo();
-
-  public boolean addFootballer(int footballerID);
-
-  public boolean deleteFootballerFromTheTeam(int footballerID);
-
-  public FootballerTO[] getFootballers();
+  public FootballTeamTO getFootballTeamInfo(int teamId);
 }
