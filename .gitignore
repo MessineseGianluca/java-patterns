@@ -1,3 +1,7 @@
 *.class
+
 .vscode/
 *.jar
+*.vbak
+*.lck
+*.bak_000f
