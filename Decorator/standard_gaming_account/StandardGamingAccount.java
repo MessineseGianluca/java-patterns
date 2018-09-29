@@ -22,7 +22,7 @@ public class StandardGamingAccount extends GamingAccountDecorator {
     }
   }
 
-  public void playForAGivenTime(int delay) {
+  private void playForAGivenTime(int delay) {
     setIsPlaying(true);
     Timer endGameTimer = new Timer();
     TimerTask endGameTask = new TimerTask() {
@@ -32,7 +32,7 @@ public class StandardGamingAccount extends GamingAccountDecorator {
         setIsPlaying(false);
         endGameTimer.cancel();
       }
-    }; 
+    };
     endGameTimer.schedule(endGameTask, delay);
   }
 }

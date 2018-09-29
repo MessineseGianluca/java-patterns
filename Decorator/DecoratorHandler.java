@@ -1,7 +1,7 @@
 import gaming_account.*;
 import gaming_account_extension.*;
 import premium_gaming_account.*;
-import standard_gaming_account.StandardGamingAccount;
+import standard_gaming_account.*;
 
 public class DecoratorHandler {
   public static void main(String[] args) {
