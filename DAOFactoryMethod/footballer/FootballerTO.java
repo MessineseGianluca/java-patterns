@@ -50,7 +50,7 @@ public class FootballerTO implements Serializable {
     this.nationality = nationality;
   }
 
-  public void setTeam(int teamId) {
+  public void setTeamId(int teamId) {
     this.teamId = teamId;
   }
 

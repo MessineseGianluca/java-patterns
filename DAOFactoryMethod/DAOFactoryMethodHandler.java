@@ -36,10 +36,10 @@ public class DAOFactoryMethodHandler {
   }
 
   private static void movePlayerToAnotherTeam(FootballerDAO footballerDAO, int footballerId, int teamId) {
-    FootballerTO footballer3 = footballerDAO.getFootballerInfo(footballerId);
+    FootballerTO footballer = footballerDAO.getFootballerInfo(footballerId);
 
-    footballer3.setTeam(teamId);
-    boolean isMoved = footballerDAO.updateFootballer(footballer3); // moves player
+    footballer.setTeamId(teamId);
+    boolean isMoved = footballerDAO.updateFootballer(footballer); // moves player
     if (isMoved) {
       System.out.println("Footballer moved.");
     }
@@ -90,9 +90,8 @@ public class DAOFactoryMethodHandler {
 
     movePlayerToAnotherTeam(footballerDAO, 2, 2); // move Dybala to Milan
     printFootballersOfTeam(footballerDAO, 2); // prints footballers of Milan
-    
-    deleteAFootballer(footballerDAO, 2); // deletes Cristiano Dybala
 
+    deleteAFootballer(footballerDAO, 2); // deletes Cristiano Dybala
 
     changeTeamName(teamDAO, "RealMadrid", 1); // change Juventus name
 
