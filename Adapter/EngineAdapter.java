@@ -4,8 +4,8 @@ import switch_logic.SwitchClient;
 public class EngineAdapter extends SwitchClient {
   private Engine adaptee;
 
-  public EngineAdapter(Engine adaptee) {
-    this.adaptee = adaptee;
+  public EngineAdapter(String engineName) {
+    this.adaptee = new Engine(engineName);
   }
 
   public void turnOn() {

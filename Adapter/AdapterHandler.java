@@ -1,10 +1,9 @@
 import switch_logic.*;
-import external_library.*;
 
 public class AdapterHandler {
   public static void main(String[] args) {
-    Engine realEngine = new Engine("Ferrari engine");
-    SwitchClient engineAdapter = new EngineAdapter(realEngine);
+
+    SwitchClient engineAdapter = new EngineAdapter("Ferrari Engine");
     Switch engineSwitch = new ConcreteSwitch(engineAdapter);
 
     engineSwitch.detectOn();
