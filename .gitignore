@@ -4,4 +4,4 @@
 *.jar
 *.vbak
 *.lck
-*.bak_000f
+*.vpp~*
